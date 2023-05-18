@@ -11,7 +11,6 @@ export function RegisterPage(): JSX.Element {
         <RegisterForm
           type="patient"
           projectId={MEDPLUM_PROJECT_ID}
-          googleClientId={MEDPLUM_GOOGLE_CLIENT_ID}
           recaptchaSiteKey={MEDPLUM_RECAPTCHA_SITE_KEY}
           onSuccess={() => navigate('/')}
         >
