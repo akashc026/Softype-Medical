@@ -1,6 +1,6 @@
 import { Schedule } from '@medplum/fhirtypes';
 import { Document, Scheduler, useMedplum } from '@medplum/react';
-import { SchedulerPage } from '../components/SchedulerPage';
+import { SchedulerPage } from '../components/SchedulerPage.jsx';
 
 export function GetCare(): JSX.Element {
   const medplum = useMedplum();

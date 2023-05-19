@@ -24,15 +24,7 @@ const useStyles = createStyles((theme) => ({
     },
 }));
 
-import { Questionnaire, Reference, Schedule, Slot } from '@medplum/fhirtypes';
-export interface SchedulerProps {
-    schedule: Schedule | Reference<Schedule>;
-    questionnaire: Questionnaire | Reference<Questionnaire>;
-}
-
-
-
-function SchedulerPage(props:SchedulerProps) {
+function SchedulerPage(props) {
     const { classes } = useStyles();
     const medplum = useMedplum();
     const schedule = useResource(props.schedule);
@@ -41,8 +33,8 @@ function SchedulerPage(props:SchedulerProps) {
     const slotsRef = useRef();
     slotsRef.current = slots;
     const [month, setMonth] = useState(getStartMonth());
-    const [date, setDate] = useState<Date>();
-    const [slot, setSlot] = useState<Slot>();
+    const [date, setDate] = useState();
+    const [slot, setSlot] = useState();
     const [response, setResponse] = useState();
     useEffect(() => {
         if (schedule) {
@@ -68,11 +60,11 @@ function SchedulerPage(props:SchedulerProps) {
     return (React.createElement("div", { className: classes.container, "data-testid": "scheduler" },
         React.createElement("div", { className: classes.info },
             actor && React.createElement(ResourceAvatar, { value: actor, size: "xl" }),
-            actor && (React.createElement("text", { size: "xl", weight: 500 },
+            actor && (React.createElement(Text, { size: "xl", weight: 500 },
                 React.createElement(ResourceName, { value: actor }))),
             React.createElement("p", null, "1 hour"),
             date && React.createElement("p", null, date.toLocaleDateString()),
-            slot && React.createElement("p", null, formatTime(new Date(slot.start)))),
+            slot && React.createElement("p", null, formatTime(new Date(slot?.start)))),
         React.createElement("div", { className: classes.selection },
             !date && (React.createElement("div", null,
                 React.createElement("h3", null, "Select date"),
@@ -87,7 +79,7 @@ function SchedulerPage(props:SchedulerProps) {
                 })))),
             date && slot && !response && (React.createElement(QuestionnaireForm, { questionnaire: questionnaire, submitButtonText: 'Next', onSubmit: setResponse })),
             date && slot && response && (React.createElement("div", null,
-                React.createElement("h3", null, "You are done!"),
+                React.createElement("h3", null, "You are done!545153"),
                 React.createElement("p", null, "Check your email for a calendar invite."))))));
 }
 function getStart(month) {
