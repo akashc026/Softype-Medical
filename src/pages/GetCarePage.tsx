@@ -1,5 +1,6 @@
 import { Schedule } from '@medplum/fhirtypes';
 import { Document, Scheduler, useMedplum } from '@medplum/react';
+import { SchedulerPage } from '../components/SchedulerPage';
 
 export function GetCare(): JSX.Element {
   const medplum = useMedplum();
@@ -7,7 +8,7 @@ export function GetCare(): JSX.Element {
 
   return (
     <Document width={800}>
-      <Scheduler
+      <SchedulerPage
         schedule={schedule as Schedule}
         questionnaire={{
           resourceType: 'Questionnaire',

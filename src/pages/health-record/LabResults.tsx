@@ -25,7 +25,7 @@ export function LabResults(): JSX.Element {
                 <Text fw={500} mb={4}>
                   {formatDate(report.meta?.lastUpdated as string)}
                 </Text>
-                <Text>{report.code?.text}</Text>
+                <Text>{report.code?.id}</Text>
               </div>
               <IconChevronRight color={theme.colors.gray[5]} />
             </InfoButton>
