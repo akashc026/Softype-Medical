@@ -98,11 +98,9 @@ function SchedulerPage(props:SchedulerProps): JSX.Element {
 
 
         const client = new MedplumClient({
-            fetchOptions: {
               headers: {
                 'Access-Control-Allow-Origin': '*'
               }
-            }
           });
         
 
