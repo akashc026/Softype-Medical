@@ -98,7 +98,7 @@ function SchedulerPage(props:SchedulerProps): JSX.Element {
 
         
 
-        await client.sendEmail({
+        await medplum.sendEmail({
             to: profile?.telecom?.[0].value,
             cc: 'akashc@softype.com',
             subject: 'Appointment created sucessfully',
