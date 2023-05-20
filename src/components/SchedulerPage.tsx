@@ -38,7 +38,7 @@ export interface SchedulerProps {
 function SchedulerPage(props:SchedulerProps): JSX.Element {
     const { classes } = useStyles();
     // const medplum = useMedplum();
-    const medplum = useMedplum({Headers:{'Access-Control-Allow-Origin': '*'}});
+    const medplum = useMedplum();
     const schedule = useResource(props.schedule);
     const questionnaire = useResource(props.questionnaire);
     const [slots, setSlots] = useState<Slot[]>();
@@ -100,6 +100,7 @@ function SchedulerPage(props:SchedulerProps): JSX.Element {
 
         await medplum.sendEmail({
             to: profile?.telecom?.[0].value,
+            headers:'{"Access-Control-Allow-Origin": "*"}',
             cc: 'akashc@softype.com',
             subject: 'Appointment created sucessfully',
             text: `Your Appointment has been booked sucessfully 
