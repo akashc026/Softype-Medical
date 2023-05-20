@@ -33,7 +33,6 @@ import { Logo } from '../../components/Logo';
 
 const useStyles = createStyles((theme) => ({
   logoButton: {
-    padding: `${theme.spacing.xs} ${theme.spacing.sm}`,
     borderRadius: theme.radius.sm,
     transition: 'background-color 100ms ease',
 
@@ -44,6 +43,11 @@ const useStyles = createStyles((theme) => ({
       ),
     },
   },
+
+  header: {
+      backgroundColor: theme.fn.variant({ variant: 'filled', color: 'blue.1' }).background,
+      borderBottom: 0,
+    },
 
   link: {
     display: 'flex',
@@ -63,7 +67,7 @@ const useStyles = createStyles((theme) => ({
     },
 
     ...theme.fn.hover({
-      backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0],
+      backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.blue[2],
     }),
   },
 
@@ -73,7 +77,7 @@ const useStyles = createStyles((theme) => ({
     borderRadius: theme.radius.md,
 
     ...theme.fn.hover({
-      backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.colors.gray[0],
+      backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.colors.blue[2],
     }),
 
     '&:active': theme.activeStyles,
@@ -160,7 +164,7 @@ export function Header(): JSX.Element {
 
   return (
     <>
-      <MantineHeader height={100} px="md">
+      <MantineHeader height={100} px="md" className={classes.header}>
         <Container py={20}>
           <Group position="apart">
             <UnstyledButton className={classes.logoButton} onClick={() => navigate('/')}>

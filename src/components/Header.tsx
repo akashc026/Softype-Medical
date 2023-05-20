@@ -23,8 +23,12 @@ const useStyles = createStyles((theme) => ({
     alignItems: 'center',
   },
 
+  header: {
+    backgroundColor: theme.fn.variant({ variant: 'filled', color: 'blue.1' }).background,
+    borderBottom: 0,
+  },
+
   logoButton: {
-    padding: `${theme.spacing.xs} ${theme.spacing.sm}`,
     borderRadius: theme.radius.sm,
     transition: 'background-color 100ms ease',
 
@@ -59,7 +63,7 @@ const useStyles = createStyles((theme) => ({
     fontWeight: 500,
 
     '&:hover': {
-      backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0],
+      backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.blue[2],
     },
   },
 
@@ -74,7 +78,7 @@ const useStyles = createStyles((theme) => ({
     transition: 'background-color 100ms ease',
 
     '&:hover': {
-      backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.white,
+      backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.blue[2],
     },
 
     [theme.fn.smallerThan('xs')]: {
@@ -83,7 +87,7 @@ const useStyles = createStyles((theme) => ({
   },
 
   userActive: {
-    backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.white,
+    backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.blue[2],
   },
 }));
 
@@ -103,7 +107,7 @@ export function Header(): JSX.Element {
   const [userMenuOpened, setUserMenuOpened] = useState(false);
 
   return (
-    <MantineHeader height={80} mb={120} fixed={true}>
+    <MantineHeader height={80} mb={120} fixed={true} className={classes.header}>
       <Container>
         <div className={classes.inner}>
           <UnstyledButton className={classes.logoButton} onClick={() => navigate('/')}>

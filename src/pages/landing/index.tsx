@@ -174,59 +174,18 @@ const autoplay = useRef(Autoplay({ delay: 2000 }));
   return (
     <div className={classes.outer}>
       <Header />
-      <img className={classes.heroImage1} src={WorkingEnvironmentImage} alt="Working Environment" />
-      <Container>
-      
-        <div className={classes.inner}>
-          <div className={classes.content}>
-          <Carousel p="xl" maw={320} slideGap={'100%'} mx="auto" withIndicators height={500}
-            plugins={[autoplay.current]}
-            onMouseEnter={autoplay.current.stop}
-            onMouseLeave={autoplay.current.reset}>
-              An extraordinary
-            <Carousel.Slide><div style={{width:'400px',height:'400px',backgroundImage:`url(${WorkingEnvironmentImage})`, backgroundSize:'100% 100%' }} ><Text>hey</Text><Button>Get started</Button></div></Carousel.Slide>
-            <Carousel.Slide><div style={{width:'400px',height:'400px',backgroundImage:`url(${DoctorImage})` ,backgroundSize:' 100% 100%' }} ><Text>hello</Text><Button>Get started</Button></div></Carousel.Slide>
-            <Carousel.Slide><div style={{width:'400px',height:'400px',backgroundImage:`url(${EngineeringImage})` ,backgroundSize:' 100% 100%' }} ><Text>hi</Text><Button>Get started</Button></div></Carousel.Slide>
+
+      <br></br>
+      <Container size='xl'>
+      <Carousel mx="auto" withIndicators height={600}
+            plugins={[autoplay.current]}>
+            <Carousel.Slide style={{width:'100%'}}><div style={{display:'grid',justifyItems:'center',alignItems:'center',width:'auto',height:'100%',backgroundImage:`url(${WorkingEnvironmentImage})`, backgroundSize:'100% 100%' }} ><div><Text>hey</Text></div><div><Button>Get started</Button></div></div></Carousel.Slide>
+            <Carousel.Slide style={{width:'100%'}}><div style={{display:'grid',justifyItems:'center',alignItems:'center',width:'auto',height:'100%',backgroundImage:`url(${DoctorImage})` ,backgroundSize:' 100% 100%' }} ><div><Text>hello</Text></div><div><Button>Get started</Button></div></div></Carousel.Slide>
+            <Carousel.Slide style={{width:'100%'}}><div style={{display:'grid',justifyItems:'center',alignItems:'center',width:'auto',height:'100%',backgroundImage:`url(${EngineeringImage})` ,backgroundSize:' 100% 100%' }} ><div><Text>hi</Text></div><div><Button>Get started</Button></div></div></Carousel.Slide>
             {/* ...other slides */}
            </Carousel>
-            <Title className={classes.title}>
-              An extraordinary
-              <br />
-              <span className={classes.highlight}>doctor&apos;s office</span>
-            </Title>
-            <Text size="lg" color="dimmed" mt="md">
-              This is not actually a medical practice, this is a sample open source application for developers to clone,
-              customize and run.
-            </Text>
-            <Group mt={30}>
-              <Button radius="xl" size="md" className={classes.control}>
-                Get started
-              </Button>
-              <Button variant="default" radius="xl" size="md" className={classes.control}>
-                Source code
-              </Button>
-            </Group>
-          </div>
-          <img className={classes.heroImage2} src={DoctorImage} alt="Doctor" />
-        </div>
       </Container>
-      <Container>
-        <div className={classes.inner}>
-          <div style={{ width: 500 }}>
-            <Text size={20} c={theme.primaryColor} mb="lg">
-              Healthcare
-            </Text>
-            <Text size={36} weight={500} mb="md">
-              A better way to get care
-            </Text>
-            <Text size={20} c={theme.colors.gray[7]}>
-              Lorem ipsum dolor sit amet consect adipisicing elit. Possimus magnam voluptatum cupiditate veritatis in
-              accusamus quisquam.
-            </Text>
-          </div>
-          <img className={classes.heroImage3} src={LabImage} alt="Laboratory" />
-        </div>
-      </Container>
+
       <Container>
         <div className={cx(classes.inner, classes.featureSection)}>
           <Stack align="flex-end">

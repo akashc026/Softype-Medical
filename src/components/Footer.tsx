@@ -2,11 +2,11 @@ import { Anchor, Container, createStyles, Divider, SimpleGrid, Stack, Text } fro
 
 const useStyles = createStyles((theme) => ({
   footer: {
-    background: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[1],
+    background: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.blue[1],
   },
 
   inner: {
-    background: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[1],
+    background: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.blue[1],
     borderTop: `1px solid ${theme.colors.gray[2]}`,
     padding: theme.spacing.xl,
     textAlign: 'center',
@@ -29,7 +29,7 @@ export function Footer(): JSX.Element {
             </SimpleGrid>
             <Divider />
             <Text color="dimmed" size="sm">
-              &copy; {new Date().getFullYear()} Foo Medical, Inc. All rights reserved.
+              &copy; {new Date().getFullYear()} Softype MedCare, Inc. All rights reserved.
             </Text>
           </Stack>
         </Container>
