@@ -1,6 +1,7 @@
 {
   "name": "foomedical",
   "version": "0.0.0",
+  "proxy": "https://api.medplum.com/email/v1/send",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
