@@ -7,7 +7,7 @@ export default defineConfig({
   plugins: [react()],
   server: {
     Proxy:{
-      '/api':'https://api.medplum.com/email/v1/send'
+      '/api':'https://api.medplum.com/email/v1/send:1'
     },
   }
 });
