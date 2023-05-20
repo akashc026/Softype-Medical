@@ -8,6 +8,8 @@ import { QuestionnaireForm } from '@medplum/react';
 import { ResourceAvatar } from '@medplum/react';
 import { ResourceName } from '@medplum/react';
 import { useResource } from '@medplum/react';
+import { MedplumClient } from '@medplum/core';
+
 import { Appointment, Patient, Questionnaire, QuestionnaireResponse, Reference, Schedule, Slot } from '@medplum/fhirtypes';
 
 const useStyles = createStyles((theme) => ({
@@ -93,7 +95,18 @@ function SchedulerPage(props:SchedulerProps): JSX.Element {
             }]
         }).then((d:Appointment)=>setAppointment(d))
 
-        await medplum.sendEmail({
+
+
+        const client = new MedplumClient({
+            fetchOptions: {
+              headers: {
+                'Access-Control-Allow-Origin': '*'
+              }
+            }
+          });
+        
+
+        await client.sendEmail({
             to: profile?.telecom?.[0].value,
             cc: 'akashc@softype.com',
             subject: 'Appointment created sucessfully',
