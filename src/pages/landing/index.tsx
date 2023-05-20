@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import {
   Box,
   Button,
@@ -16,7 +17,9 @@ import EngineeringImage from '../../img/landingPage/engineering.jpg';
 import LabImage from '../../img/landingPage/laboratory.jpg';
 import WorkingEnvironmentImage from '../../img/landingPage/working-environment.jpg';
 import { Header } from './Header';
-
+import { Carousel } from '@mantine/carousel';
+import Autoplay from 'embla-carousel-autoplay';
+import { useRef } from 'react';
 const heroImageStyles: CSSObject = {
   position: 'absolute',
   borderRadius: '50%',
@@ -165,14 +168,27 @@ const features = [
 
 export function LandingPage(): JSX.Element {
   const theme = useMantineTheme();
+const autoplay = useRef(Autoplay({ delay: 2000 }));
+
   const { classes, cx } = useStyles();
   return (
     <div className={classes.outer}>
       <Header />
       <img className={classes.heroImage1} src={WorkingEnvironmentImage} alt="Working Environment" />
       <Container>
+      
         <div className={classes.inner}>
           <div className={classes.content}>
+          <Carousel p="xl" maw={320} slideGap={'100%'} mx="auto" withIndicators height={500}
+            plugins={[autoplay.current]}
+            onMouseEnter={autoplay.current.stop}
+            onMouseLeave={autoplay.current.reset}>
+              An extraordinary
+            <Carousel.Slide><div style={{width:'400px',height:'400px',backgroundImage:`url(${WorkingEnvironmentImage})`, backgroundSize:'100% 100%' }} ><Text>hey</Text><Button>Get started</Button></div></Carousel.Slide>
+            <Carousel.Slide><div style={{width:'400px',height:'400px',backgroundImage:`url(${DoctorImage})` ,backgroundSize:' 100% 100%' }} ><Text>hello</Text><Button>Get started</Button></div></Carousel.Slide>
+            <Carousel.Slide><div style={{width:'400px',height:'400px',backgroundImage:`url(${EngineeringImage})` ,backgroundSize:' 100% 100%' }} ><Text>hi</Text><Button>Get started</Button></div></Carousel.Slide>
+            {/* ...other slides */}
+           </Carousel>
             <Title className={classes.title}>
               An extraordinary
               <br />
