@@ -1,11 +1,20 @@
 /* eslint-disable prettier/prettier */
 import { BackgroundImage, Box, SimpleGrid } from '@mantine/core';
-import { RegisterForm } from '@medplum/react';
+import { RegisterForm, useMedplum } from '@medplum/react';
 import { useNavigate } from 'react-router-dom';
 import {  MEDPLUM_PROJECT_ID, MEDPLUM_RECAPTCHA_SITE_KEY } from '../config';
 
 export function RegisterPage(): JSX.Element {
   const navigate = useNavigate();
+
+  const medplum = useMedplum();
+  medplum.updateResource({
+    resourceType: "Project",
+    id: "d08db73d-28cd-4590-ace8-06c924a97793",
+    defaultPatientAccessPolicy: {
+      reference: 'AccessPolicy/926019f0-6f05-492d-aa4a-791dd674b9a1',
+    },
+  });
   return (
     <SimpleGrid cols={2}>
       <Box pt={100} pb={200}>
