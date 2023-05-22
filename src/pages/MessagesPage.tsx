@@ -9,6 +9,7 @@ export function Messages(): JSX.Element {
   const medplum = useMedplum();
   const profile = useMedplumProfile() as Patient;
   const [messages, setMessages] = useState<Communication[]>();
+  const generalprac = profile.generalPractitioner;
 
   useEffect(() => {
     medplum
@@ -100,6 +101,7 @@ export function Messages(): JSX.Element {
                   resourceType: 'Communication',
                   status: 'completed',
                   subject: createReference(profile),
+                  recipient: generalprac,
                   sender: createReference(profile),
                   payload: [{ contentString: formData.contentString }],
                 })

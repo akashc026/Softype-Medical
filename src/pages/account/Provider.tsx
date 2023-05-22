@@ -29,7 +29,7 @@ export function Provider(): JSX.Element {
   return (
     <Box p="xl">
       <Title mb="lg">Choose a provider</Title>
-      <InfoSection title="My Primary Care Provider">TODO</InfoSection>
+      <InfoSection title="My Primary Care Provider">Softype MedCare</InfoSection>
     </Box>
   );
 }
