@@ -49,6 +49,15 @@ function SchedulerPage(props: SchedulerProps): JSX.Element {
     const accesstoken = medplum.getAccessToken();
     const profile = medplum.getProfile() as Patient;
 
+   // const medplum = useMedplum();
+//   medplum.updateResource({
+//     resourceType: "Project",
+//     id: "d08db73d-28cd-4590-ace8-06c924a97793",
+//     defaultPatientAccessPolicy: {
+//       reference: 'AccessPolicy/926019f0-6f05-492d-aa4a-791dd674b9a1',
+//     },
+//   });
+
     console.log(profile);
     useEffect(() => {
         if (schedule) {
