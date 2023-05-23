@@ -20,6 +20,7 @@ import { Header } from './Header';
 import { Carousel } from '@mantine/carousel';
 import Autoplay from 'embla-carousel-autoplay';
 import { useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 const heroImageStyles: CSSObject = {
   position: 'absolute',
   borderRadius: '50%',
@@ -105,12 +106,65 @@ const useStyles = createStyles((theme) => ({
     height: 448,
   },
 
+
+
+  
+  heroButton: {
+    marginTop: '2.25rem',
+
+    [theme.fn.smallerThan('sm')]: {
+      width: '100%',
+    },
+  },
+
+  heroTitle: {
+    color: theme.white,
+    fontSize: 50,
+    fontWeight: 500,
+    lineHeight: 1.2,
+
+    [theme.fn.smallerThan('sm')]: {
+      fontSize: 30,
+      lineHeight: 1.2,
+    },
+
+    [theme.fn.smallerThan('xs')]: {
+      fontSize: 28,
+      lineHeight: 1.3,
+    },
+  },
+
+  heroContainer: {
+    height: 400,
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'flex-end',
+    alignItems: 'flex-start',
+    paddingTop: '4.5rem',
+    paddingBottom: '6rem',
+    zIndex: 1,
+    position: 'relative',
+
+    [theme.fn.smallerThan('sm')]: {
+      paddingTop: '3rem',
+      paddingBottom: '4.5rem',
+    },
+  },
+
+
+
+
+
+
+
+
+
   heroImage4: {
     ...heroImageStyles,
     top: -48,
     left: -432,
     width: 864,
-    height: 864,
+    height: 785,
 
     [theme.fn.smallerThan('md')]: {
       position: 'static',
@@ -146,29 +200,23 @@ const useStyles = createStyles((theme) => ({
 const features = [
   {
     title: 'Comprehsive Care Plans',
-    description:
-      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.',
   },
   {
     title: 'No hidden fees',
-    description:
-      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.',
   },
   {
-    title: '24/7 Messaging',
-    description:
-      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.',
+    title: '24/7 Messaging'
   },
   {
     title: 'Clinically rigorous',
-    description:
-      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.',
   },
 ];
 
 export function LandingPage(): JSX.Element {
+
+  const navigate = useNavigate();
   const theme = useMantineTheme();
-const autoplay = useRef(Autoplay({ delay: 2000 }));
+  const autoplay = useRef(Autoplay({ delay: 2000 }));
 
   const { classes, cx } = useStyles();
   return (
@@ -176,15 +224,45 @@ const autoplay = useRef(Autoplay({ delay: 2000 }));
       <Header />
 
       <br></br>
-      <Container size='xl'>
-      <Carousel mx="auto" withIndicators height={600}
-            plugins={[autoplay.current]}>
-            <Carousel.Slide style={{width:'100%'}}><div style={{display:'grid',justifyItems:'center',alignItems:'center',width:'auto',height:'100%',backgroundImage:`url(${WorkingEnvironmentImage})`, backgroundSize:'100% 100%' }} ><div><Text>hey</Text></div><div><Button>Get started</Button></div></div></Carousel.Slide>
-            <Carousel.Slide style={{width:'100%'}}><div style={{display:'grid',justifyItems:'center',alignItems:'center',width:'auto',height:'100%',backgroundImage:`url(${DoctorImage})` ,backgroundSize:' 100% 100%' }} ><div><Text>hello</Text></div><div><Button>Get started</Button></div></div></Carousel.Slide>
-            <Carousel.Slide style={{width:'100%'}}><div style={{display:'grid',justifyItems:'center',alignItems:'center',width:'auto',height:'100%',backgroundImage:`url(${EngineeringImage})` ,backgroundSize:' 100% 100%' }} ><div><Text>hi</Text></div><div><Button>Get started</Button></div></div></Carousel.Slide>
-            {/* ...other slides */}
-           </Carousel>
-      </Container>
+
+      <div style={{ backgroundSize: "cover", backgroundPosition: 'center', position: 'relative' }}>
+
+        <Carousel mx="auto" withIndicators height={600}
+          plugins={[autoplay.current]}>
+          <Carousel.Slide style={{ width: '100%' }}><div style={{ display: 'grid', justifyItems: 'center', alignItems: 'center', width: 'auto', height: '100%', backgroundImage: `url(${WorkingEnvironmentImage})`, backgroundSize: '100% 100%' }} >
+            <Container className={classes.heroContainer}>
+              <Title className={classes.heroTitle}>
+                Book Appointment,<br /> Quickly with our Professional Doctors.
+              </Title>
+              <Button size="xl" radius="xl" className={classes.heroButton} onClick={() => navigate('/signin')}>
+                Get Started
+              </Button>
+            </Container>
+          </div></Carousel.Slide>
+          <Carousel.Slide style={{ width: '100%' }}><div style={{ display: 'grid', justifyItems: 'center', alignItems: 'center', width: 'auto', height: '100%', backgroundImage: `url(${DoctorImage})`, backgroundSize: ' 100% 100%' }} >
+          <Container className={classes.heroContainer}>
+              <Title className={classes.heroTitle}>
+                More Care plans,<br />& Chat with our Doctors one to one.
+              </Title>
+              <Button size="xl" radius="xl" className={classes.heroButton} onClick={() => navigate('/signin')}>
+                Get Started
+              </Button>
+            </Container>
+            </div></Carousel.Slide>
+          <Carousel.Slide style={{ width: '100%' }}><div style={{ display: 'grid', justifyItems: 'center', alignItems: 'center', width: 'auto', height: '100%', backgroundImage: `url(${EngineeringImage})`, backgroundSize: ' 100% 100%' }} >
+          <Container className={classes.heroContainer}>
+              <Title className={classes.heroTitle}>
+                Check Health Record,<br />& Medications,Vaccines..etc all in one place.
+              </Title>
+              <Button size="xl" radius="xl" className={classes.heroButton} onClick={() => navigate('/signin')}>
+                Get Started
+              </Button>
+            </Container>
+            </div></Carousel.Slide>
+          {/* ...other slides */}
+        </Carousel>
+
+      </div>
 
       <Container>
         <div className={cx(classes.inner, classes.featureSection)}>
@@ -192,7 +270,6 @@ const autoplay = useRef(Autoplay({ delay: 2000 }));
             {features.map((feature, index) => (
               <Box key={`feature-${index}`} className={classes.featureBox}>
                 <Text className={classes.featureTitle}>{feature.title}</Text>
-                <Text className={classes.featureDescription}>{feature.description}</Text>
               </Box>
             ))}
           </Stack>

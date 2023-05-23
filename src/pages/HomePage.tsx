@@ -182,9 +182,7 @@ export function HomePage(): JSX.Element {
   return (
     <>
       <Box className={classes.announcements}>
-        <span>
-          Announcements go here. <Anchor href="#">Include links if needed.</Anchor>
-        </span>
+      
       </Box>
       <div className={classes.hero}>
         <Overlay
@@ -196,7 +194,7 @@ export function HomePage(): JSX.Element {
           <Title className={classes.heroTitle}>
             Hi <span className="text-teal-600">{profileName}</span>,<br /> we’re here to help
           </Title>
-          <Button size="xl" radius="xl" className={classes.heroButton}>
+          <Button size="xl" radius="xl" className={classes.heroButton} onClick={()=>{navigate("/get-care")}}>
             Get Care
           </Button>
         </Container>

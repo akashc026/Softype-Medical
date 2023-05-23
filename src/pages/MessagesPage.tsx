@@ -16,7 +16,7 @@ export function Messages(): JSX.Element {
       .graphql(
         `
         {
-          CommunicationList(subject: "${getReferenceString(profile)}") {
+          CommunicationList(sender: "${getReferenceString(profile)}",recipient: "${generalprac}") {
             resourceType
             id
             meta {

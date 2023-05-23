@@ -10,7 +10,7 @@ import {
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { ResourceAvatar, useMedplumProfile } from '@medplum/react';
-import { IconChevronDown, IconLogout, IconSettings, IconUserCircle } from '@tabler/icons-react';
+import { IconChevronDown, IconEdit, IconLogout, IconSettings, IconUserCircle } from '@tabler/icons-react';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Logo } from './Logo';
@@ -144,10 +144,10 @@ export function Header(): JSX.Element {
                 Your profile
               </Menu.Item>
               <Menu.Item
-                icon={<IconSettings size={16} color={theme.colors.blue[6]} stroke={1.5} />}
-                onClick={() => navigate('/account/profile')}
+                icon={<IconEdit size={16} color={theme.colors.blue[6]} stroke={1.5} />}
+                onClick={() => navigate(`Patient/edit/${profile?.id}`)}
               >
-                Settings
+                Edit Profile
               </Menu.Item>
               <Menu.Item
                 icon={<IconLogout size={16} color={theme.colors.gray[6]} stroke={1.5} />}
