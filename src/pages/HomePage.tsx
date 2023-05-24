@@ -105,32 +105,24 @@ const carouselItems = [
   {
     img: <IconChecklist />,
     title: 'Welcome to Softype MedCare',
-    description:
-      'Lorem ipsum at porta donec ultricies ut, arcu morbi amet arcu ornare, curabitur pharetra magna tempus',
     url: '/get-care',
     label: 'Learn how we help',
   },
   {
     img: <IconChecklist />,
     title: 'Verify Email',
-    description:
-      'Lorem ipsum at porta donec ultricies ut, arcu morbi amet arcu ornare, curabitur pharetra magna tempus',
-    url: '/account',
+    url: '/',
     label: 'Send verification email',
   },
   {
     img: <IconChecklist />,
     title: 'Select a Doctor',
-    description:
-      'Lorem ipsum at porta donec ultricies ut, arcu morbi amet arcu ornare, curabitur pharetra magna tempus',
-    url: '/account/provider/choose-a-primary-care-povider',
+    url: '/account/provider',
     label: 'Choose a Primary Care Provider',
   },
   {
     img: <IconChecklist />,
     title: 'Emergency Contact',
-    description:
-      'Lorem ipsum at porta donec ultricies ut, arcu morbi amet arcu ornare, curabitur pharetra magna tempus',
     url: '/account',
     label: 'Add emergency contact',
   },
@@ -219,7 +211,7 @@ export function HomePage(): JSX.Element {
                     {item.title}
                   </Text>
                   <Text size="sm" color="dimmed" my="sm">
-                    {item.description}
+                    
                   </Text>
                   <Anchor>{item.label}</Anchor>
                 </Card>
@@ -236,15 +228,13 @@ export function HomePage(): JSX.Element {
               Better rest, better health
             </Text>
             <Text size="sm" color="dimmed" my="sm">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste
-              dolor cupiditate blanditiis ratione. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores
-              impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.
+              
             </Text>
             <Button>Invite Friends</Button>
           </Card>
         </Container>
       </Box>
-      <Box p="lg" bg="gray.0">
+      {/* <Box p="lg" bg="gray.0">
         <Container>
           <Card shadow="md" radius="md" className={classes.card} p="xl">
             <Flex>
@@ -254,18 +244,16 @@ export function HomePage(): JSX.Element {
                   Now available
                 </Badge>
                 <Text size="lg" weight={500} mt="md">
-                  Title
+                  Book Appointments Now
                 </Text>
                 <Text size="sm" color="dimmed" my="sm">
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque,
-                  iste dolor cupiditate blanditiis ratione. Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                  Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.
+                 Welcome to Patient portal
                 </Text>
               </div>
             </Flex>
           </Card>
         </Container>
-      </Box>
+      </Box> */}
       <Box p="lg" bg="gray.0">
         <Container>
           <Grid columns={3}>
