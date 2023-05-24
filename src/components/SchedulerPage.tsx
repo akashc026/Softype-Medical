@@ -99,7 +99,7 @@ function SchedulerPage(props: SchedulerProps): JSX.Element {
 
         await medplum.createResource({
             resourceType: "Appointment",
-            status: "booked",
+            status: "pending",
             slot: [createReference(s)],
             start: s.start,
             end: s.end,

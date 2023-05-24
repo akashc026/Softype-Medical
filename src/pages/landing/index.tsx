@@ -12,10 +12,10 @@ import {
   useMantineTheme,
 } from '@mantine/core';
 import { Footer } from '../../components/Footer';
-import DoctorImage from '../../img/landingPage/doctor.jpg';
-import EngineeringImage from '../../img/landingPage/engineering.jpg';
-import LabImage from '../../img/landingPage/laboratory.jpg';
-import WorkingEnvironmentImage from '../../img/landingPage/working-environment.jpg';
+import DoctorImage from '../../img/landingPage/best-health-insurance-plans_1-sixteen_nine.png';
+import EngineeringImage from '../../img/landingPage/health-insurance-concept-doctor-hospital-260nw-1451879171.png';
+import LabImage from '../../img/landingPage/engineering.jpg';
+import WorkingEnvironmentImage from '../../img/landingPage/Does-your-health-insurance-cover-mental-health-services.png';
 import { Header } from './Header';
 import { Carousel } from '@mantine/carousel';
 import Autoplay from 'embla-carousel-autoplay';
@@ -273,7 +273,7 @@ export function LandingPage(): JSX.Element {
               </Box>
             ))}
           </Stack>
-          <img className={classes.heroImage4} src={EngineeringImage} alt="Laboratory" />
+          <img className={classes.heroImage4} src={LabImage} alt="Laboratory" />
         </div>
       </Container>
       <Footer />

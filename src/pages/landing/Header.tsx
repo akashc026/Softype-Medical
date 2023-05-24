@@ -177,14 +177,14 @@ export function Header(): JSX.Element {
                   <a href="#" className={classes.link}>
                     <Center inline>
                       <Box component="span" mr={5}>
-                        Services
+                        Home
                       </Box>
-                      <IconChevronDown size={16} color={theme.fn.primaryColor()} />
+                      {/* <IconChevronDown size={16} color={theme.fn.primaryColor()} /> */}
                     </Center>
                   </a>
                 </HoverCard.Target>
 
-                <HoverCard.Dropdown sx={{ overflow: 'hidden' }}>
+                {/* <HoverCard.Dropdown sx={{ overflow: 'hidden' }}>
                   <Group position="apart" px="md">
                     <Text weight={500}>Services</Text>
                     <Anchor href="#" size="xs">
@@ -211,13 +211,13 @@ export function Header(): JSX.Element {
                       <Button variant="default">Get started</Button>
                     </Group>
                   </div>
-                </HoverCard.Dropdown>
+                </HoverCard.Dropdown> */}
               </HoverCard>
               <a href="#" className={classes.link}>
-                Counseling
+                About us
               </a>
               <a href="#" className={classes.link}>
-                Physicians
+                Services
               </a>
               <a href="#" className={classes.link}>
                 More

@@ -12,58 +12,66 @@ export function Messages(): JSX.Element {
   const generalprac = profile.generalPractitioner;
 
   useEffect(() => {
-    medplum
-      .graphql(
-        `
-        {
-          CommunicationList(sender: "${getReferenceString(profile)}",recipient: "${generalprac}") {
-            resourceType
-            id
-            meta {
-              lastUpdated
-            }
-            payload {
-              contentString
-              contentAttachment {
-                url
-                contentType
-              }
-            }
-            sender {
-              reference
-              resource {
-                ... on Patient {
-                  resourceType
-                  id
-                  name {
-                    given
-                    family
-                  }
-                  photo {
-                    contentType
-                    url
-                  }
-                }
-                ... on Practitioner {
-                  resourceType
-                  id
-                  name {
-                    given
-                    family
-                  }
-                  photo {
-                    contentType
-                    url
-                  }
-                }
-              }
-            }
-          }
-      }
-        `
-      )
-      .then((value) => setMessages(value.data.CommunicationList as Communication[]))
-      .catch((err) => console.error(err));
+
+    if (profile) {
+     
+      const prom =  medplum.searchResources('Communication', `sender=${getReferenceString(profile)}`)
+      const prom2 =  medplum.searchResources('Communication', `recipient=${getReferenceString(profile)}`)
+      Promise.all([prom,prom2]).then(data=>setMessages([...data[0],...data[1]]))
+      
+    }
+    // medplum
+    //   .graphql(
+    //     `
+    //     {
+    //       CommunicationList(sender: "${getReferenceString(profile)}",recipient: "${generalprac}") {
+    //         resourceType
+    //         id
+    //         meta {
+    //           lastUpdated
+    //         }
+    //         payload {
+    //           contentString
+    //           contentAttachment {
+    //             url
+    //             contentType
+    //           }
+    //         }
+    //         sender {
+    //           reference
+    //           resource {
+    //             ... on Patient {
+    //               resourceType
+    //               id
+    //               name {
+    //                 given
+    //                 family
+    //               }
+    //               photo {
+    //                 contentType
+    //                 url
+    //               }
+    //             }
+    //             ... on Practitioner {
+    //               resourceType
+    //               id
+    //               name {
+    //                 given
+    //                 family
+    //               }
+    //               photo {
+    //                 contentType
+    //                 url
+    //               }
+    //             }
+    //           }
+    //         }
+    //       }
+    //   }
+    //     `
+    //   )
+    //   .then((value) => setMessages(value.data.CommunicationList as Communication[]))
+    //   .catch((err) => console.error(err));
   }, [medplum, profile]);
 
   if (!messages) {
@@ -78,10 +86,10 @@ export function Messages(): JSX.Element {
         {messages.map((resource) => (
           <div key={resource.id}>
             <Group align="top">
-              <ResourceAvatar size="lg" radius="xl" value={resource.sender?.resource as Practitioner} />
+              <ResourceAvatar size="lg" radius="xl" value={resource.sender as Practitioner} />
               <div>
                 <Text size="sm" weight={500}>
-                  <ResourceName value={resource.sender?.resource as Patient | Practitioner} />
+                  <ResourceName value={resource.sender as Patient | Practitioner} />
                 </Text>
                 <Text size="xs" color="dimmed">
                   {formatDateTime(resource?.meta?.lastUpdated)}
