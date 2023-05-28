@@ -74,6 +74,12 @@ export function Messages(): JSX.Element {
     //   .catch((err) => console.error(err));
   }, [medplum, profile]);
 
+  var msg = messages?.sort((a, b) => {
+    let fi = new Date(a?.meta?.lastUpdated as string);
+    let fg = new Date(b?.meta?.lastUpdated as string);
+    return Number(fi) - Number(fg);
+  })
+
   if (!messages) {
     return <Loading />;
   }
