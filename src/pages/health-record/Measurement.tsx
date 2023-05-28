@@ -206,10 +206,6 @@ export function Measurement(): JSX.Element | null {
 
   return (
     <Document>
-      <Group position="apart" mb="xl">
-        <Title order={1}>{title}</Title>
-        <Button onClick={() => setModalOpen(true)}>Add Measurement</Button>
-      </Group>
       {chartData && <LineChart chartData={chartData} />}
       <Box my="xl">
         <Alert icon={<IconAlertCircle size={16} />} title="What is this measurement?" color="gray" radius="md">
