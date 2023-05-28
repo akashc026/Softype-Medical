@@ -1,8 +1,8 @@
 /* eslint-disable prettier/prettier */
-import { createStyles, Stack } from '@mantine/core';
-import { getReferenceString, createReference } from '@medplum/core';
+import { createStyles, Group, Stack, Text } from '@mantine/core';
+import { getReferenceString, createReference, formatDateTime } from '@medplum/core';
 import React, { useState, useEffect } from 'react';
-import { getStartMonth, CalendarInput } from '@medplum/react';
+import { getStartMonth, CalendarInput, ResourceBadge } from '@medplum/react';
 import { useMedplum } from '@medplum/react';
 import { QuestionnaireForm } from '@medplum/react';
 import { ResourceAvatar } from '@medplum/react';
@@ -34,7 +34,7 @@ export interface SchedulerProps {
 
 
 function SchedulerPage(props: SchedulerProps): JSX.Element {
-    
+
     const { classes } = useStyles();
     const medplum = useMedplum();
     const schedule = useResource(props.schedule);
@@ -49,14 +49,14 @@ function SchedulerPage(props: SchedulerProps): JSX.Element {
     const accesstoken = medplum.getAccessToken();
     const profile = medplum.getProfile() as Patient;
 
-   // const medplum = useMedplum();
-//   medplum.updateResource({
-//     resourceType: "Project",
-//     id: "d08db73d-28cd-4590-ace8-06c924a97793",
-//     defaultPatientAccessPolicy: {
-//       reference: 'AccessPolicy/926019f0-6f05-492d-aa4a-791dd674b9a1',
-//     },
-//   });
+    // const medplum = useMedplum();
+    //   medplum.updateResource({
+    //     resourceType: "Project",
+    //     id: "d08db73d-28cd-4590-ace8-06c924a97793",
+    //     defaultPatientAccessPolicy: {
+    //       reference: 'AccessPolicy/926019f0-6f05-492d-aa4a-791dd674b9a1',
+    //     },
+    //   });
 
     console.log(profile);
     useEffect(() => {
@@ -72,7 +72,7 @@ function SchedulerPage(props: SchedulerProps): JSX.Element {
                 .then(data => setSlots(data))
                 .catch(console.log);
 
-             
+
         }
         else {
             setSlots(undefined);
@@ -94,7 +94,7 @@ function SchedulerPage(props: SchedulerProps): JSX.Element {
             console.log(e)
         })
 
-        
+
 
 
         await medplum.createResource({
@@ -177,10 +177,22 @@ function SchedulerPage(props: SchedulerProps): JSX.Element {
                     </thead>
                     <tbody>
                         <tr>
-                            <td>{appointment?.participant?.find(p => p.actor?.type === "Practitioner")?.actor?.display}</td>
-                            <td>{appointment?.description}</td>
-                            <td>{appointment?.start}</td>
-                            <td>{appointment?.end}</td>
+                            <td><Group spacing="sm">
+                                <div>
+                                    <Text fz="sm" fw={500}>
+                                        <ResourceBadge value={appointment?.participant?.find((op) => op.actor?.reference?.includes("Practitioner"))?.actor} />
+                                    </Text>
+                                </div>
+                            </Group></td>
+                            <td><Text fz="sm" fw={500}>
+                                {formatDateTime(appointment?.start)}
+                            </Text></td>
+                            <td><Text fz="sm" fw={500}>
+                                {formatDateTime(appointment?.end)}
+                            </Text></td>
+                        </tr>
+                        <tr>
+                        <td><Group position="center" ><Text fz="sm" fw={500}>Appointment Booked Successfully</Text></Group></td>
                         </tr>
                     </tbody>
 

@@ -21,6 +21,7 @@ import { Messages } from './pages/MessagesPage';
 import { ObservationPage } from './pages/ObservationPage';
 import { SignOutPage } from './pages/SignOutPage';
 import { UpdateResourcePage } from './pages/account/UpdatesResourcePage';
+import { AppointmentList } from './pages/Appointments/AppointmentList';
 
 export function Router(): JSX.Element {
   return (
@@ -46,6 +47,7 @@ export function Router(): JSX.Element {
         <Route path="action-items/:itemId" element={<ActionItem />} />
       </Route>
       <Route path="get-care/*" element={<GetCare />} />
+      <Route path='appointment' element={<AppointmentList/>} />
       <Route path="account/*" element={<AccountPage />}>
         <Route index element={<Navigate replace to="/account/profile" />} />
         <Route path="profile" element={<Profile />} />

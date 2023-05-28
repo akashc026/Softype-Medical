@@ -68,19 +68,7 @@ export function GetCare(): JSX.Element {
                 linkId: 'q1',
                 type: 'string',
                 text: 'Question 1',
-              },
-              {
-                id: 'id-2',
-                linkId: 'q2',
-                type: 'string',
-                text: 'Question 2',
-              },
-              {
-                id: 'id-3',
-                linkId: 'q3',
-                type: 'string',
-                text: 'Question 3',
-              },
+              }
             ],
           }}
         />

@@ -96,6 +96,7 @@ const navigation = [
   { name: 'Messages', href: '/messages' },
   { name: 'Care Plan', href: '/care-plan' },
   { name: 'Get Care', href: '/get-care' },
+  { name: 'Appointments', href: '/appointment' },
 ];
 
 export function Header(): JSX.Element {
